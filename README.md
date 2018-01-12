@@ -78,17 +78,17 @@ Automate these steps where possible.
 
 3. Study each attribute and its characteristics:
 
-..* Name
+⋅⋅* Name
 
-..* Type (catagorical, int/float, bounded/unbounded, text, structured, etc.)
+⋅⋅* Type (catagorical, int/float, bounded/unbounded, text, structured, etc.)
 
-..* % of missing values
+⋅⋅* % of missing values
 
-..* Noisiness and type of noise (stochastic, outliers, rounding errors, etc.)
+⋅⋅* Noisiness and type of noise (stochastic, outliers, rounding errors, etc.)
 
-..* Possibly useful for the task?
+⋅⋅* Possibly useful for the task?
 
-..* Type of distribution (Gaussian, uniform, logarithmic, etc.)
+⋅⋅* Type of distribution (Gaussian, uniform, logarithmic, etc.)
 
 4. For supervised learning tasks, identify the target attributes(s).
 
@@ -103,3 +103,119 @@ Automate these steps where possible.
 9. Identify extra data that would be useful.
 
 10. Document what you have learned.
+
+## Prepare the Data
+
+Notes:
+
+⋅⋅* Work on copies of the data (keep the original dataset intact).
+
+⋅⋅* Write functions for all data transformations you apply, for five reasons:
+
+  ⋅⋅- So you can easily prepare the data the next time you get a fresh dataset
+  
+  ⋅⋅- So you can apply these transformations in future projects
+  
+  ⋅⋅- To clean and prepare the test set
+  
+  ⋅⋅- To clean and prepare new data instances once your solution is live
+  
+  ⋅⋅- To make it easy to treat your preparation choices as hyperparameters
+  
+1. Data Cleaning:
+
+⋅⋅* Fix or remove outliers (optionals).
+
+⋅⋅* Fill in missing values (e.g., with zero, mean, median...) or drop their rows (or columns).
+
+2. Feature selection (optionals):
+
+⋅⋅* Drop the attributes that provide no useful information for the task.
+
+3. Feature enginerring, where appropriate:
+
+⋅⋅* Discretize continuous features.
+
+⋅⋅* Decompose features (e.g., categorical, date/time, etc.).
+
+⋅⋅* Add promising transformations of features (e.g., log(x), sqrt(x), x^2, etc.).
+
+⋅⋅* Aggregate features into promising new features.
+
+4. Feature scaling: standardize or normalize features.
+
+## Short-List Promising Models
+
+Notes:
+
+⋅⋅* If the data is huge, you may want to sample smaller training sets so you can train many different models in a reasonable time (be aware that this penalizes complex models such as large neural nets or Random Forests).
+
+⋅⋅* Try to automate these steps as much as possible.
+
+1. Train many quick and dirty models from different categories (e.g., linear, naive Bayes, SVM, Random Forests, neural net, etc.) using standard parameters.
+
+2. Measure and compare their performance.
+
+⋅⋅* For each model, use N-fold cross-validation and compute the mean and standard deviation of the performance measure on the N folds.
+
+3. Analyze the most significant variables for each algorithm.
+
+4. Analyze the types of errors the models make.
+
+⋅⋅* What data would a human have used to avoid these erros?
+
+5. Have a quick round of feature selection and engineering.
+
+6. Have one or two more quick iterations of the five previous steps.
+
+7. Short-list the top three to five most promising models, preferring models that make different types of errors.
+
+## Fine-Tune the System
+
+Notes:
+
+⋅⋅* You will want to use as much data as possible for this step, especially as you move toward the end of fine-tuning.
+
+⋅⋅* Automate what you can.
+
+1. Fine-tune the hyperparameters using cross-validation.
+
+⋅⋅* Treat your data tranformation choices as hyperparameters, especially when you are not sure about them (e.g., should I replace missing values with zero or with the median value? or Just drop the rows?).
+
+⋅⋅* Unless there are very few hyperparameter values to explore, prefer random search over grid search. If training is very long, you may prefer a Bayesian optimization approach (e.g., using Gaussian process priors, as described by Jasper Snoek, Hugo Larachelle, and Ryan Adams (https://goo.gl/PEFfGr "Practical Bayesian Optimization of Machine Learning Algorithms")). 
+
+2. Try Ensemble methods. Combinbing you best models will often perform better than running them individually.
+
+3. Once you are confident about your finalmodel, measure its performance on the test set to estimate the generalization error.
+
+## Present Your Solution
+
+1. Document what you have done.
+
+2. Create a nice presentation.
+
+⋅⋅* Make sure you highlight the big picture first.
+
+3. Explain why your solution achieves the business objective.
+
+4. Don't forget to present interesting points you noticed along the way.
+
+⋅⋅* Describe what worked and what did not.
+
+⋅⋅* List your assumptions and your system's lmitations.
+
+5. Ensure your key findings are communicated through beautiful visializations or easy-to-remember statements.
+
+## Launch
+
+1. Get your solution ready for production (plug into prod data imputs, write unit tests, etc.).
+
+2. Write monitoring code to check your system's live performance at regular intervals and trigger alerts when it drops.
+
+⋅⋅* Beware of slow degradation too: models tend to rot as data evolves.
+
+⋅⋅* Measuing performance may require a human pipeline.
+
+⋅⋅* Also monitor your inputs' quality. This is particularly important for online learning systems.
+
+3. Retrain your models on a regular basis on fresh data, automatically if possible.
