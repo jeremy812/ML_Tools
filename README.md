@@ -112,15 +112,15 @@ Notes:
 
 ⋅⋅* Write functions for all data transformations you apply, for five reasons:
 
-  ⋅⋅- So you can easily prepare the data the next time you get a fresh dataset
+  ⋅⋅* So you can easily prepare the data the next time you get a fresh dataset
   
-  ⋅⋅- So you can apply these transformations in future projects
+  ⋅⋅* So you can apply these transformations in future projects
   
-  ⋅⋅- To clean and prepare the test set
+  ⋅⋅* To clean and prepare the test set
   
-  ⋅⋅- To clean and prepare new data instances once your solution is live
+  ⋅⋅* To clean and prepare new data instances once your solution is live
   
-  ⋅⋅- To make it easy to treat your preparation choices as hyperparameters
+  ⋅⋅* To make it easy to treat your preparation choices as hyperparameters
   
 1. Data Cleaning:
 
