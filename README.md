@@ -70,4 +70,36 @@ Automate these steps where possible.
 
 11. Sample a test set and put it aside.
 
-## 
+## Explore the Data
+
+1. Create a copy of the data for exploration (sampling it down to a manageable size if necessary).
+
+2. Create a Jupyter notebook to keep a record of your data exploration. 
+
+3. Study each attribute and its characteristics:
+
+..* Name
+
+..* Type (catagorical, int/float, bounded/unbounded, text, structured, etc.)
+
+..* % of missing values
+
+..* Noisiness and type of noise (stochastic, outliers, rounding errors, etc.)
+
+..* Possibly useful for the task?
+
+..* Type of distribution (Gaussian, uniform, logarithmic, etc.)
+
+4. For supervised learning tasks, identify the target attributes(s).
+
+5. Visualize the data.
+
+6. Study the correlations between attributes.
+
+7. Study how you would solve the problem manually.
+
+8. Identify the promising transformations you may want to apply.
+
+9. Identify extra data that would be useful.
+
+10. Document what you have learned.
