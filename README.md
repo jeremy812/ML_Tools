@@ -52,7 +52,7 @@ Automate these steps where possible.
 
 2. Find and document where you can get that data.
 
-3. Check ouw much space it will take.
+3. Check how much space it will take.
 
 4. Check legal obligations.
 
@@ -124,11 +124,11 @@ Notes:
   
 1. Data Cleaning:
 
-⋅⋅* Fix or remove outliers (optionals).
+⋅⋅* Fix or remove outliers (optional).
 
 ⋅⋅* Fill in missing values (e.g., with zero, mean, median...) or drop their rows (or columns).
 
-2. Feature selection (optionals):
+2. Feature selection (optional):
 
 ⋅⋅* Drop the attributes that provide no useful information for the task.
 
@@ -162,7 +162,7 @@ Notes:
 
 4. Analyze the types of errors the models make.
 
-⋅⋅* What data would a human have used to avoid these erros?
+⋅⋅* What data would a human have used to avoid these errors?
 
 5. Have a quick round of feature selection and engineering.
 
@@ -186,7 +186,7 @@ Notes:
 
 2. Try Ensemble methods. Combinbing you best models will often perform better than running them individually.
 
-3. Once you are confident about your finalmodel, measure its performance on the test set to estimate the generalization error.
+3. Once you are confident about your final model, measure its performance on the test set to estimate the generalization error.
 
 ## Present Your Solution
 
@@ -214,7 +214,7 @@ Notes:
 
 ⋅⋅* Beware of slow degradation too: models tend to rot as data evolves.
 
-⋅⋅* Measuing performance may require a human pipeline.
+⋅⋅* Measuring performance may require a human pipeline.
 
 ⋅⋅* Also monitor your inputs' quality. This is particularly important for online learning systems.
 
